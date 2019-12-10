@@ -13,7 +13,7 @@ import arrayGenerator.scope.Scope;
 public class IntegerArrayGenerator extends ScopedArrayGenerator<Integer>
 {
     /**
-     * @param scope the arrayGenerator.scope of values that may appear in the array.
+     * @param scope  the arrayGenerator.scope of values that mayappear in the array.
      */
     public IntegerArrayGenerator(Scope<Integer> scope) {
         super(scope);

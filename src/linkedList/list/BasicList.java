@@ -59,7 +59,7 @@ public abstract class BasicList<N extends ListNode<T>,T> implements LinkedList<N
             ListNode<T> currentNode = getRoot();
             StringBuilder string = new StringBuilder("[" + currentNode.getValue());
             while ((currentNode = currentNode.getNext()) != null) {
-                string.append("," + currentNode.getValue());
+                string.append(", " + currentNode.getValue());
             }
             string.append("]");
             return string.toString();

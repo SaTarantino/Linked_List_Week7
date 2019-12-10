@@ -5,30 +5,41 @@ import linkedList.node.SingleLinkNode;
 
 public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements List<T> {
 
-    SingleLinkNode<T> head;
+    private SingleLinkNode<T> aNode;
 
     @Override
     public void add(int index, T value) throws ListAccessError {
 
-        SingleLinkNode<T> node;
-        node = null;
-        node.setNext(null);
+        if (index == 0) {
+            SingleLinkNode<T> node = new SingleLinkNode<T>(value);
+            node.setNext(getRoot());
+            setRoot(node);
+            return;
+        }
 
-        if (isEmpty()) {
-            head = node;
-        }
-        else {
-            SingleLinkNode<T> n = head;
-            while (n.getNext() != null) {
-                n = n.getNext();
-            }
-            n.setNext(node);
-        }
+        SingleLinkNode<T> previousNode = getNode(index - 1);
+        SingleLinkNode<T> newNode = new SingleLinkNode<T>(value, previousNode.getNext());
+        previousNode.setNext(newNode);
     }
 
     @Override
     public T remove(int index) throws ListAccessError {
-        return null;
+        if (index == 0) {
+            SingleLinkNode<T> node = getRoot();
+            setRoot((SingleLinkNode)getRoot().getNext());
+            return node.getValue();
+        }
+
+        SingleLinkNode<T> currentNode = getNode(index - 1);
+        SingleLinkNode<T> nextNode = (SingleLinkNode<T>) currentNode.getNext();
+
+        if (nextNode == null)
+            throw new ListAccessError("Index out of boundaries");
+
+        currentNode.setNext((SingleLinkNode<T>) nextNode.getNext());
+        nextNode.setNext(null);
+
+        return nextNode.getValue();
     }
 
     @Override
@@ -36,7 +47,7 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
         return getNode(index).getValue();
     }
 
-    public ListNode<T> getNode(int index) throws ListAccessError {
+    public SingleLinkNode<T> getNode(int index) throws ListAccessError {
 
         if (isEmpty())
             throw new ListAccessError("Empty list.");
@@ -44,7 +55,7 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
         if (index < 0)
             throw new ListAccessError("Negative index.");
 
-        ListNode<T> node = getRoot();
+        SingleLinkNode<T> node = getRoot();
 
         while (index != 0 && node != null) {
             node = node.getNext();
@@ -52,28 +63,23 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
         }
 
         if (node == null)
-            throw new ListAccessError("Invalid node");
+            throw new ListAccessError("Invalid node, index out of boundaries");
 
         return node;
     }
 
-//    public void show() {
-//        SingleLinkNode node = head;
-//
-//        while (node.getNext() != null) {
-//            System.out.println(node.getValue());
-//            node = node.getNext();
-//        }
-//    }
-//
-//    public static void main(String[] args) throws ListAccessError {
-//        SingleLinkList list = new SingleLinkList();
-//
-//        list.add(0, 18);
-//        list.add(1, 40);
-//        list.add(2, 20);
-//
-//        list.show();
-//    }
+    public static void main(String[] args) throws ListAccessError {
+        SingleLinkList<Integer> s= new SingleLinkList<>();
+        s.add(0,9);
+        s.add(1,5);
+        s.add(0,3);
+        s.add(3,1);
+        System.out.println(s);
+        s.remove(1);
+        System.out.println(s);
+        s.remove(0);
+        System.out.println(s);
+        System.out.println(s.get(1));
+    }
 }
 
