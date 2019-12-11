@@ -2,10 +2,20 @@ package linkedList.list;
 
 import linkedList.node.SingleLinkNode;
 
+/**
+ * author Salvatore Tarantino, u1860830
+ * u1860830@hud.ac.uk
+ */
+
 public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements List<T> {
 
-    private SingleLinkNode<T> aNode;
-
+    /**
+     * An implementation of an add method for a Linked List.
+     *
+     * @param index the index at which the new entry should be added.
+     * @param value the value to be added.
+     * @throws ListAccessError
+     */
     @Override
     public void add(int index, T value) throws ListAccessError {
 
@@ -20,6 +30,13 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
         SingleLinkNode<T> newNode = new SingleLinkNode<T>(value, previousNode.getNext());
         previousNode.setNext(newNode);
     }
+
+    /**
+     * An implementation of a remove method for a Linked List.
+     *
+     * @param index the index of the entry to be removed.
+     * @throws ListAccessError
+     */
 
     @Override
     public T remove(int index) throws ListAccessError {
@@ -40,6 +57,13 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
 
         return nextNode.getValue();
     }
+
+    /**
+     *
+     * @param index the index of the entry to be accessed.
+     * @return the wanted entry.
+     * @throws ListAccessError
+     */
 
     @Override
     public T get(int index) throws ListAccessError {
@@ -67,4 +91,3 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
         return node;
     }
 }
-
