@@ -1,6 +1,5 @@
 package linkedList.list;
 
-import linkedList.node.ListNode;
 import linkedList.node.SingleLinkNode;
 
 public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements List<T> {
@@ -66,20 +65,6 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
             throw new ListAccessError("Invalid node, index out of boundaries");
 
         return node;
-    }
-
-    public static void main(String[] args) throws ListAccessError {
-        SingleLinkList<Integer> s= new SingleLinkList<>();
-        s.add(0,9);
-        s.add(1,5);
-        s.add(0,3);
-        s.add(3,1);
-        System.out.println(s);
-        s.remove(1);
-        System.out.println(s);
-        s.remove(0);
-        System.out.println(s);
-        System.out.println(s.get(1));
     }
 }
 
