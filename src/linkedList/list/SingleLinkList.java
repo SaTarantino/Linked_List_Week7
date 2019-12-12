@@ -16,6 +16,7 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
      * @param value the value to be added.
      * @throws ListAccessError
      */
+
     @Override
     public void add(int index, T value) throws ListAccessError {
 
@@ -59,6 +60,7 @@ public class SingleLinkList<T> extends BasicList<SingleLinkNode<T>,T> implements
     }
 
     /**
+     * An implementation of a get method for a Linked List.
      *
      * @param index the index of the entry to be accessed.
      * @return the wanted entry.
