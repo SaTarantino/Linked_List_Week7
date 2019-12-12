@@ -118,9 +118,7 @@ public class LinkListIntegerTest {
     void removeShortListTest() throws ListAccessError {
         populate(shortArray);
         int y = (int) linkedList.get(70);
-        System.out.println(linkedList.get(70));
         linkedList.remove(70);
-        System.out.println(linkedList.get(70));
         assertNotEquals(linkedList.get(70), y);
     }
 
